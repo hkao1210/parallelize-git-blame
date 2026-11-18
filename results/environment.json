@@ -1,0 +1,44 @@
+{
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "machine": "arm64",
+  "logical_cpus": 10,
+  "python": "3.10.15",
+  "git": "git version 2.54.0 (Apple Git-157)",
+  "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin",
+  "baseline_argv": [
+    "git",
+    "-c",
+    "core.attributesFile=/dev/null",
+    "-C",
+    "<repo>",
+    "blame",
+    "--line-porcelain",
+    "<commit>",
+    "--",
+    "file.txt"
+  ],
+  "environment": {
+    "GIT_CONFIG_NOSYSTEM": "1",
+    "GIT_CONFIG_GLOBAL": "/dev/null",
+    "LC_ALL": "C",
+    "GIT_NO_REPLACE_OBJECTS": "1"
+  },
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/git/git/v2.54.0/blame.c",
+      "sha256": "58921e78cedabaf7b83780d4e911faadb4ca88db7b6816332db7508b8be79974"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/git/git/v2.54.0/builtin/blame.c",
+      "sha256": "0e7080166fd7f2cf1bfbcfdf4ac730928446a2a23fb0b5a3b2f3ef7055b2e53a"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/git/git/v2.54.0/Documentation/git-blame.adoc",
+      "sha256": "7192e201a723bba058d08114949a463861a9f4fca9c73b8969df18937ff9e27d"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/git/git/v2.54.0/Documentation/diff-options.adoc",
+      "sha256": "94ef855ae2d8463d8542bdc07bccabf1670d25f0f5646164d5f098d4d7d4f039"
+    }
+  ]
+}

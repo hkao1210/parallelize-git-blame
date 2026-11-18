@@ -1,0 +1,1 @@
+{"histories": 111, "comparisons": 731, "mismatches": 0}

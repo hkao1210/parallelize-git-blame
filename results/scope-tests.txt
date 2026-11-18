@@ -1,0 +1,9 @@
+test_reject_merge_binary_deletion_attributes (tests.test_correctness.Correctness) ... ok
+test_scope_rejections (tests.test_correctness.Correctness) ... ok
+test_deterministic (tests.test_correctness.Correctness) ... ok
+test_algebra (tests.test_correctness.Correctness) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 7.973s
+
+OK
