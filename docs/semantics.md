@@ -19,8 +19,9 @@ proof for all Git behavior or versions.
 
 The [blame documentation](https://github.com/git/git/blob/v2.54.0/Documentation/git-blame.adoc)
 notes automatic whole-file rename following. Consequently merely passing
-`--no-renames` to diff would not establish scope correctness. We conservatively
-reject any other historical file and whole-file disappearance after creation.
+`--no-renames` to diff would not establish scope correctness. We reject target absence in any nonempty historical tree and whole-file
+disappearance after creation. Other paths are now permitted when the target
+persists: `find_origin` resolves the same path before `find_rename` is attempted.
 The [diff documentation](https://github.com/git/git/blob/v2.54.0/Documentation/diff-options.adoc)
 describes the indent heuristic and hunk generation options.
 
@@ -53,8 +54,8 @@ Lines split on LF only; missing final newline is left to Git's diff semantics.
 
 Only complete linear ancestry, committed regular file content, no NUL bytes,
 and default attribution. All ancestors are inspected, including untouched
-commits, before mapping. Empty trees before creation are supported. Other
-historical paths, merges, shallow repositories, replace refs, grafts, local
+commits, before mapping. Empty trees before creation are supported. Target absence in nonempty trees, historical attributes,
+merges, shallow repositories, replace refs, grafts, local
 attributes, custom diff/blame/include configuration and whole-file disappearance
 are rejected. Global/system configuration is excluded for reproducibility.
 CLI accepts no -M/-C/-w/ignore-rev/reverse/range options. Ignored revisions cannot
@@ -67,3 +68,14 @@ computing diffs on unresolved slices instead could change alignment. No claim
 about merges, rename tracking, copied/moved lines, or ignored commits is made.
 
 Global attributes are disabled with `-c core.attributesFile=/dev/null` on every Git invocation; working-tree `.gitattributes` along the target path are rejected.
+
+## Performance-phase extension (2026-11-18)
+
+Sequential resolution now composes backward and can stop diffing once all
+entries are terminal. Full mode intentionally processes every edge; windowed
+mode checks only at disjoint geometric window boundaries. All modes still
+validate the full history and eagerly cache unique blobs. Unchanged blob IDs
+produce identity summaries without spawning diff. At most the requested number
+of Git diff processes run at once. See `docs/benchmark-method.md` for details.
+The early report describes the original forward eager implementation; its
+checkpoint is preserved at commit eb8ff39.

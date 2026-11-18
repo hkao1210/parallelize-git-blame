@@ -1,0 +1,130 @@
+[
+  {
+    "workload": "zlib_deflate",
+    "native_work_counters": {
+      "num read blob": 70,
+      "num get patch": 68,
+      "num commits": 68
+    },
+    "raw_tail": "\t}",
+    "custom_stats_instrumented": {
+      "mode": "sequential",
+      "workers": 1,
+      "initial_window": 8,
+      "diffs": 68,
+      "identity_edges": 59,
+      "duplicate_diffs": 0,
+      "diff_input_bytes": 7662911,
+      "patch_bytes": 187680,
+      "diff_task_seconds": 0.9781758009630721,
+      "summary_task_seconds": 0.017954287148313597,
+      "edge_stage_seconds": 1.0010020492482,
+      "compose_seconds": 0.02836674396530725,
+      "windows": 127,
+      "history_seconds": 1.922317083721282,
+      "object_seconds": 0.9721734162594657,
+      "commits": 128,
+      "unique_blobs": 69,
+      "blob_bytes": 3883660,
+      "origin_seconds": 0.0013140829978510737,
+      "unprocessed_edges": 0,
+      "total_seconds": 3.926164542004699
+    }
+  },
+  {
+    "workload": "zlib_inflate",
+    "native_work_counters": {
+      "num read blob": 43,
+      "num get patch": 41,
+      "num commits": 41
+    },
+    "raw_tail": "\t}",
+    "custom_stats_instrumented": {
+      "mode": "sequential",
+      "workers": 1,
+      "initial_window": 8,
+      "diffs": 41,
+      "identity_edges": 86,
+      "duplicate_diffs": 0,
+      "diff_input_bytes": 2775995,
+      "patch_bytes": 124484,
+      "diff_task_seconds": 0.5920213330246042,
+      "summary_task_seconds": 0.009208837058395147,
+      "edge_stage_seconds": 0.606333417003043,
+      "compose_seconds": 0.02183383866213262,
+      "windows": 127,
+      "history_seconds": 1.9057279600237962,
+      "object_seconds": 0.5842689149721991,
+      "commits": 128,
+      "unique_blobs": 42,
+      "blob_bytes": 1417342,
+      "origin_seconds": 0.00034587501431815326,
+      "unprocessed_edges": 0,
+      "total_seconds": 3.119435375003377
+    }
+  },
+  {
+    "workload": "persistent",
+    "native_work_counters": {
+      "num read blob": 49,
+      "num get patch": 47,
+      "num commits": 47
+    },
+    "raw_tail": "\tline 11999 original",
+    "custom_stats_instrumented": {
+      "mode": "sequential",
+      "workers": 1,
+      "initial_window": 8,
+      "diffs": 47,
+      "identity_edges": 0,
+      "duplicate_diffs": 0,
+      "diff_input_bytes": 22369664,
+      "patch_bytes": 129177,
+      "diff_task_seconds": 0.6928964549151715,
+      "summary_task_seconds": 0.043503791122930124,
+      "edge_stage_seconds": 0.7379027919960208,
+      "compose_seconds": 0.06622841506032273,
+      "windows": 47,
+      "history_seconds": 0.7791304141283035,
+      "object_seconds": 0.6884905858605634,
+      "commits": 48,
+      "unique_blobs": 48,
+      "blob_bytes": 11423040,
+      "origin_seconds": 0.005705916992155835,
+      "unprocessed_edges": 0,
+      "total_seconds": 2.2785393749945797
+    }
+  },
+  {
+    "workload": "recent_rewrite",
+    "native_work_counters": {
+      "num read blob": 6,
+      "num get patch": 4,
+      "num commits": 4
+    },
+    "raw_tail": "\trewritten 11999 revision 44",
+    "custom_stats_instrumented": {
+      "mode": "sequential",
+      "workers": 1,
+      "initial_window": 8,
+      "diffs": 4,
+      "identity_edges": 0,
+      "duplicate_diffs": 0,
+      "diff_input_bytes": 2583488,
+      "patch_bytes": 606632,
+      "diff_task_seconds": 0.06363041696022265,
+      "summary_task_seconds": 0.010138000012375414,
+      "edge_stage_seconds": 0.07391683402238414,
+      "compose_seconds": 0.005559499026276171,
+      "windows": 4,
+      "history_seconds": 0.7733674161427189,
+      "object_seconds": 0.6808310838532634,
+      "commits": 48,
+      "unique_blobs": 48,
+      "blob_bytes": 11817536,
+      "origin_seconds": 0.004278333013644442,
+      "unprocessed_edges": 43,
+      "total_seconds": 1.5398441249853931
+    }
+  }
+]

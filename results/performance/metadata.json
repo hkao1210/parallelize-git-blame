@@ -1,0 +1,29 @@
+{
+  "git": "git version 2.54.0 (Apple Git-157)",
+  "python": "3.10.15 (main, Jan  3 2026, 20:49:16) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "logical_cpus": 10,
+  "cpu": "Apple M4",
+  "cache_policy": "one unmeasured warm-up per configuration; no cache flushing; OS cache uncontrolled thereafter",
+  "repeats": 10,
+  "order_seed": 20261118,
+  "memory": "5ms sampled process-tree RSS (may miss short peaks; double-counts shared pages); time -l max process RSS, bytes on macOS",
+  "cpu_time": "RUSAGE_CHILDREN user+system delta, includes waited descendant processes",
+  "bytes": "blob_bytes: unique blob payloads returned to Python, not physical disk I/O; diff_input_bytes: logical pair payloads (repeats counted); native unknown",
+  "source_sha256": {
+    "src/diff_map.py": "91220cba5d4dbca7351e76a67a83969f7fedfef4d4dcf08640057eac53f7f3f0",
+    "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/oracle.py": "e7dcba67dded82ad9c99be0bf144be344eab25bbcb11e2e10b85cabd2c3951ba",
+    "src/provenance.py": "d22919df3e2966841b0793faaa4ffc866f4a09e447d3b04734cd43c6fc19c906",
+    "src/__main__.py": "ccf0554da08ca763bae557a0cad890788226cdb5c2f1b557b677331ed11f9316",
+    "src/schedulers.py": "20e19cf2ab7e460e4ea09e0b1d9e74540436f019c33118f85fd38f5c5d82edef",
+    "src/history.py": "c56b47eb2027c68512bae357c7fa06be78a4d234ad12f51af07706727dcd3eac",
+    "bench/worker.py": "e361d02db53d680915c97712d0bb4418138dea219050313506b2a92a914b994e",
+    "bench/run.py": "52ea1acef2d26c38c750855bfb317ba83877b7b8e80e767e83edb66de5a91af4",
+    "bench/plot.py": "03d84d8cbd436a9b07d2a6c8427fa8631700b98a8a81fafc2dfe76fdc6e51c1e",
+    "bench/profile.py": "87fe07b4ec7d4f13ebd1fd90750fe4c6f3081f92594f20b14f13acab4fafe058",
+    "bench/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bench/prepare.py": "ae1f80a2738e2fe669315b01b2e586cc2948f379ee3e3e56fdde1fdca3c0db45",
+    "bench/analyze.py": "5ecf1756fbf736997ccb4b003b38f112a8bc2d47cd9756c509afb744461961e5"
+  }
+}

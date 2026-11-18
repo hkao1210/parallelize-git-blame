@@ -6,6 +6,9 @@ HEADER = re.compile(rb'^([0-9a-f]{40,64}) (\d+) (\d+)(?: \d+)?$')
 
 def blame(repo, revision, path):
     raw = git(repo, 'blame', '--line-porcelain', revision, '--', path)
+    return parse(raw)
+
+def parse(raw):
     result = []
     pending = None
     for row in raw.split(b'\n'):

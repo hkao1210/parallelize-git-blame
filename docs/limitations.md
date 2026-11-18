@@ -1,21 +1,26 @@
-# Limitations
+# Current limitations (2026-11-18)
 
-This is the requested first sequential checkpoint. No multicore prototype,
-window scheduler, realistic repository benchmark, profiler result, or go/no-go
-performance decision exists yet. Gate A is empirical and scoped to accepted
-inputs; B/C have not been attempted. No novelty claim has been evaluated.
+The performance prototype has bounded independent Git diff workers and disjoint
+backward windows. Dense composition is sequential; no parallel composition tree
+or compact interval representation has been implemented. Python blob caching is
+per invocation, eager, and unbounded with history size. Speculative windows save
+diff work, not the full-history validation or initial object reads. Whole-tree
+inspection and per-blob subprocess startup can dominate the cost.
 
-The dense reference eagerly enumerates every ancestor and materializes every
-blob, repeatedly spawns Git, and composes forward. It has no blob cache, bounded
-memory guarantee, interval compression, early stopping, or byte accounting.
-It is unsuitable as evidence of performance feasibility. Its purpose is to
-validate matching and terminal-origin composition before optimization.
+Only complete linear histories with a regular target present in every nonempty
+tree are accepted. This excludes many real files created later in a project's
+life. No merges, rename ancestry, attributes, ignored revisions, -M/-C, or binary
+NUL content. Global/system configuration is sanitized. Empirical correctness is
+not a proof for all histories or all Git builds; upstream source inspection is
+not verification of Apple's patches.
 
-Historical trees containing any second file are explicitly unsupported in this
-checkpoint. This is stricter than the eventual one-target-file experiment, to
-avoid silently accepting rename sources or attribute rules. Real repositories
-will require careful scope validation before benchmark inclusion.
+The benchmark uses two files from one real historical repository and two
+synthetic histories, on one machine. Warmed cache runs only; no controlled cold
+cache, affinity, or frequency isolation. Process-tree memory is sampled, and
+byte counts are logical payloads rather than measured physical disk I/O. Native
+work counters and custom stage profiling do not constitute a detailed native
+CPU hotspot profile. Broad performance generality remains unverified.
 
-Tests run on one installed Apple Git binary. Passing randomized tests does not
-prove correctness for arbitrary histories or other Git versions. Configuration
-is sanitized; results are not promised to match a user's customized blame run.
+Novelty is not established. The broad parallel-blame idea predates this project;
+see `docs/novelty-review.md`. Any conclusion about the current architecture must
+not be generalized into a proof that every parallel blame algorithm is slow.

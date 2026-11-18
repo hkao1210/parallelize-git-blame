@@ -1,0 +1,38 @@
+         1373459 function calls (1373456 primitive calls) in 2.279 seconds
+
+   Ordered by: cumulative time
+   List reduced from 175 to 30 due to restriction <30>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.005    0.005    2.279    2.279 schedulers.py:12(run)
+      151    0.002    0.000    2.158    0.014 history.py:17(git)
+      151    0.001    0.000    2.138    0.014 subprocess.py:373(check_output)
+      151    0.005    0.000    2.136    0.014 subprocess.py:461(run)
+      151    0.003    0.000    1.839    0.012 subprocess.py:1110(communicate)
+      151    0.007    0.000    1.836    0.012 subprocess.py:1968(_communicate)
+      637    0.003    0.000    1.808    0.003 selectors.py:403(select)
+      637    1.804    0.003    1.804    0.003 {method 'poll' of 'select.poll' objects}
+        1    0.002    0.002    1.468    1.468 history.py:25(discover)
+       47    0.000    0.000    0.737    0.016 schedulers.py:51(<listcomp>)
+       47    0.001    0.000    0.737    0.016 schedulers.py:29(compute)
+       47    0.006    0.000    0.737    0.016 diff_map.py:9(edge)
+      151    0.012    0.000    0.291    0.002 subprocess.py:758(__init__)
+      151    0.020    0.000    0.272    0.002 subprocess.py:1703(_execute_child)
+      151    0.139    0.001    0.139    0.001 {built-in method _posixsubprocess.fork_exec}
+      939    0.081    0.000    0.081    0.000 {built-in method posix.read}
+       47    0.019    0.000    0.062    0.001 provenance.py:15(compose)
+   564047    0.033    0.000    0.044    0.000 provenance.py:17(<genexpr>)
+       95    0.004    0.000    0.028    0.000 history.py:21(lines)
+      287    0.024    0.000    0.024    0.000 {method 'split' of 'bytes' objects}
+      151    0.006    0.000    0.019    0.000 subprocess.py:1227(_close_pipe_fds)
+      151    0.002    0.000    0.018    0.000 history.py:10(git_environment)
+      151    0.003    0.000    0.015    0.000 history.py:11(<dictcomp>)
+   605061    0.013    0.000    0.013    0.000 {built-in method builtins.isinstance}
+     6946    0.002    0.000    0.011    0.000 _collections_abc.py:909(__iter__)
+      188    0.007    0.000    0.009    0.000 {method 'extend' of 'list' objects}
+      302    0.006    0.000    0.009    0.000 contextlib.py:496(callback)
+     6795    0.003    0.000    0.006    0.000 os.py:675(__getitem__)
+    17365    0.003    0.000    0.005    0.000 os.py:805(fsencode)
+     3171    0.001    0.000    0.005    0.000 subprocess.py:1791(<genexpr>)
+
+

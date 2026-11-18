@@ -1,24 +1,32 @@
 """Conservative scope validation and reproducible Git invocation."""
 import os
 import subprocess
+from time import perf_counter
 from pathlib import Path
 
 class Unsupported(ValueError):
     pass
 
-def git(repo, *args, env=None):
+def git_environment(env=None):
     clean = {k: v for k, v in os.environ.items() if not k.startswith('GIT_')}
     clean.update(GIT_CONFIG_NOSYSTEM='1', GIT_CONFIG_GLOBAL=os.devnull,
                  LC_ALL='C', GIT_NO_REPLACE_OBJECTS='1')
     clean.update(env or {})
-    return subprocess.check_output(['git', '-c', 'core.attributesFile=' + os.devnull, '-C', str(repo), *args], env=clean,
+    return clean
+
+def git(repo, *args, env=None):
+    return subprocess.check_output(['git', '-c', 'core.attributesFile=' + os.devnull, '-C', str(repo), *args], env=git_environment(env),
                                    stderr=subprocess.PIPE)
 
 def lines(blob):
     # Git splits on LF only, not Python's broader splitlines delimiters.
     return blob.split(b'\n')[:-1] if blob.endswith(b'\n') else (blob.split(b'\n') if blob else [])
 
-def discover(repo, revision, path):
+def discover(repo, revision, path, stats=None):
+    started = perf_counter()
+    stats = stats if stats is not None else {}
+    object_seconds = 0.0
+    cache = {}
     if not revision or revision.startswith('-'):
         raise Unsupported('revision must not be an option')
     if not path or path.startswith('-') or any(c in path for c in ':\n\r\0') or Path(path).is_absolute() or '..' in Path(path).parts:
@@ -52,20 +60,30 @@ def discover(repo, revision, path):
         found = None
         for entry in filter(None, entries):
             meta, name = entry.split(b'\t', 1)
-            # Deliberately conservative: excludes rename/copy sources and attributes.
+            if name.split(b'/')[-1] == b'.gitattributes':
+                raise Unsupported('historical attributes')
             if name != path.encode():
-                raise Unsupported('initial prototype permits only the target file in every tree')
+                continue
             mode, kind, oid = meta.split()
             if mode not in (b'100644', b'100755') or kind != b'blob':
                 raise Unsupported('non-regular file')
             found = oid.decode()
+        if found is None and any(entries):
+            raise Unsupported('target absent from a nonempty tree; possible rename ancestry')
         if found is None and seen:
             raise Unsupported('whole-file deletion/recreation')
         seen |= found is not None
-        blob = git(repo, 'cat-file', 'blob', found) if found else b''
+        before = perf_counter()
+        if found and found not in cache:
+            cache[found] = git(repo, 'cat-file', 'blob', found)
+        blob = cache[found] if found else b''
+        object_seconds += perf_counter() - before
         if b'\0' in blob:
             raise Unsupported('binary NUL content')
         blobs.append((found, blob))
     if not seen:
         raise Unsupported('target file does not exist')
+    stats.update(history_seconds=perf_counter()-started-object_seconds,
+                 object_seconds=object_seconds, commits=len(commits),
+                 unique_blobs=len(cache), blob_bytes=sum(map(len, cache.values())))
     return commits, blobs

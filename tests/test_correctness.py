@@ -5,7 +5,7 @@ from pathlib import Path
 from src.history import Unsupported, git
 from src.oracle import blame
 from src.provenance import Origin, identity, compose
-from src.schedulers import sequential
+from src.schedulers import sequential, run
 from .fixtures import CASES, create, random_versions
 
 class Correctness(unittest.TestCase):
@@ -61,6 +61,41 @@ class Correctness(unittest.TestCase):
                 with self.assertRaises(Unsupported):
                     sequential(repo, revision, 'file.txt')
 
+    def test_parallel_and_windows(self):
+        cases = list(CASES.items()) + [(str(seed), random_versions(seed)) for seed in range(100)]
+        for name, versions in cases:
+            with self.subTest(case=name), tempfile.TemporaryDirectory() as directory:
+                repo = Path(directory)
+                create(repo, versions)
+                expected = blame(repo, 'HEAD', 'file.txt')
+                for mode in ('full', 'windowed'):
+                    actual, stats = run(repo, 'HEAD', 'file.txt', mode, 2, 2)
+                    self.assertEqual(actual, expected)
+                    self.assertEqual(stats['duplicate_diffs'], 0)
+
+    def test_early_stop_and_full_work(self):
+        with tempfile.TemporaryDirectory() as directory:
+            repo = Path(directory)
+            create(repo, [b'old\n'] * 10 + [b'new\n'])
+            expected = blame(repo, 'HEAD', 'file.txt')
+            for workers in (1, 2, 4, 8):
+                actual, stats = run(repo, 'HEAD', 'file.txt', 'windowed', workers, 2)
+                self.assertEqual(actual, expected)
+                self.assertEqual(stats['unprocessed_edges'], 8)
+                self.assertEqual(stats['commits'], 11)  # discovery remains eager
+            actual, stats = run(repo, 'HEAD', 'file.txt', 'full', 4)
+            self.assertEqual(actual, expected)
+            self.assertEqual(stats['unprocessed_edges'], 0)
+
+    def test_reject_rename_source(self):
+        with tempfile.TemporaryDirectory() as directory:
+            repo = Path(directory)
+            create(repo, [b'a\n'])
+            git(repo, 'mv', 'file.txt', 'renamed.txt')
+            git(repo, 'commit', '-qm', 'rename')
+            with self.assertRaises(Unsupported):
+                sequential(repo, 'HEAD', 'renamed.txt')
+
     def test_scope_rejections(self):
         with tempfile.TemporaryDirectory() as directory:
             repo = Path(directory)
@@ -72,8 +107,7 @@ class Correctness(unittest.TestCase):
             (repo / 'other').write_text('source')
             git(repo, 'add', 'other')
             git(repo, 'commit', '-qm', 'other file')
-            with self.assertRaises(Unsupported):
-                sequential(repo, 'HEAD', 'file.txt')
+            self.assertEqual(sequential(repo, 'HEAD', 'file.txt'), blame(repo, 'HEAD', 'file.txt'))
 
 if __name__ == '__main__':
     unittest.main()

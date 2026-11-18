@@ -1,0 +1,176 @@
+{
+  "measured_runs": 400,
+  "all_correct": true,
+  "stage_scaling_real_signal": true,
+  "real_end_to_end_at_least_1_2x": false,
+  "decision": "PIVOT",
+  "edge_scaling": [
+    {
+      "workload": "zlib_deflate",
+      "workers": 1,
+      "median_speedup": 1.0,
+      "bootstrap_95_percent_interval": [
+        1,
+        1
+      ]
+    },
+    {
+      "workload": "zlib_deflate",
+      "workers": 2,
+      "median_speedup": 1.566141114859666,
+      "bootstrap_95_percent_interval": [
+        1.5423110655491463,
+        1.5986664669516113
+      ]
+    },
+    {
+      "workload": "zlib_deflate",
+      "workers": 4,
+      "median_speedup": 2.326334177630038,
+      "bootstrap_95_percent_interval": [
+        2.251291344600883,
+        2.416768379329951
+      ]
+    },
+    {
+      "workload": "zlib_deflate",
+      "workers": 8,
+      "median_speedup": 2.8745483407365917,
+      "bootstrap_95_percent_interval": [
+        2.790733993647751,
+        2.938406296875406
+      ]
+    },
+    {
+      "workload": "zlib_inflate",
+      "workers": 1,
+      "median_speedup": 1.0,
+      "bootstrap_95_percent_interval": [
+        1,
+        1
+      ]
+    },
+    {
+      "workload": "zlib_inflate",
+      "workers": 2,
+      "median_speedup": 1.367549204399787,
+      "bootstrap_95_percent_interval": [
+        1.1165250084728895,
+        1.6031694557249605
+      ]
+    },
+    {
+      "workload": "zlib_inflate",
+      "workers": 4,
+      "median_speedup": 2.02654774714111,
+      "bootstrap_95_percent_interval": [
+        1.7237001606141646,
+        2.2640157978611826
+      ]
+    },
+    {
+      "workload": "zlib_inflate",
+      "workers": 8,
+      "median_speedup": 2.68417548056071,
+      "bootstrap_95_percent_interval": [
+        2.0923659123370446,
+        2.9890484401842263
+      ]
+    },
+    {
+      "workload": "persistent",
+      "workers": 1,
+      "median_speedup": 1.0,
+      "bootstrap_95_percent_interval": [
+        1,
+        1
+      ]
+    },
+    {
+      "workload": "persistent",
+      "workers": 2,
+      "median_speedup": 1.8041665246627399,
+      "bootstrap_95_percent_interval": [
+        1.6739732903956215,
+        1.9295139974649633
+      ]
+    },
+    {
+      "workload": "persistent",
+      "workers": 4,
+      "median_speedup": 2.952431699688424,
+      "bootstrap_95_percent_interval": [
+        2.8050704865612572,
+        3.1617500183243243
+      ]
+    },
+    {
+      "workload": "persistent",
+      "workers": 8,
+      "median_speedup": 3.7515547071700395,
+      "bootstrap_95_percent_interval": [
+        3.509866840350934,
+        4.007001944263912
+      ]
+    },
+    {
+      "workload": "recent_rewrite",
+      "workers": 1,
+      "median_speedup": 1.0,
+      "bootstrap_95_percent_interval": [
+        1,
+        1
+      ]
+    },
+    {
+      "workload": "recent_rewrite",
+      "workers": 2,
+      "median_speedup": 1.6286132883348434,
+      "bootstrap_95_percent_interval": [
+        1.3957889208121104,
+        1.8312297071131787
+      ]
+    },
+    {
+      "workload": "recent_rewrite",
+      "workers": 4,
+      "median_speedup": 2.619419829979259,
+      "bootstrap_95_percent_interval": [
+        2.173314334573476,
+        2.9347205519040878
+      ]
+    },
+    {
+      "workload": "recent_rewrite",
+      "workers": 8,
+      "median_speedup": 2.878529211706084,
+      "bootstrap_95_percent_interval": [
+        2.5840238552106323,
+        3.4842331850957815
+      ]
+    }
+  ],
+  "best_custom_by_workload": [
+    {
+      "workload": "zlib_deflate",
+      "configuration": "windowed-8",
+      "speedup_vs_native": 0.012585733862806045
+    },
+    {
+      "workload": "zlib_inflate",
+      "configuration": "full-4",
+      "speedup_vs_native": 0.010865920760095054
+    },
+    {
+      "workload": "persistent",
+      "configuration": "windowed-8",
+      "speedup_vs_native": 0.05910080267560712
+    },
+    {
+      "workload": "recent_rewrite",
+      "configuration": "sequential",
+      "speedup_vs_native": 0.06484776638689416
+    }
+  ],
+  "bootstrap_note": "5000 independent resamples of 10 measurements; descriptive, no multiple-comparison correction"
+}

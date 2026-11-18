@@ -1,14 +1,17 @@
 """Extract unchanged line correspondence from zero-context Git diff hunks."""
 import re
+from time import perf_counter
 from .history import git, lines
 from .provenance import Origin
 
 HUNK = re.compile(rb'^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@', re.M)
 
-def edge(repo, parent, commit, path, old_blob, new_blob):
+def edge(repo, parent, commit, path, old_blob, new_blob, stats=None):
+    start = perf_counter()
     patch = git(repo, 'diff', '--no-ext-diff', '--no-textconv', '--no-renames',
                 '--diff-algorithm=myers', '--indent-heuristic', '--no-color',
                 '--unified=0', '--inter-hunk-context=0', parent, commit, '--', path)
+    after_diff = perf_counter()
     mapping = []
     old_pos = new_pos = 0
     for match in HUNK.finditer(patch):
@@ -21,4 +24,8 @@ def edge(repo, parent, commit, path, old_blob, new_blob):
         old_pos, new_pos = a + ac, b + bc
     mapping.extend(range(old_pos, len(lines(old_blob))))
     assert len(mapping) == len(lines(new_blob))
-    return tuple(mapping)
+    result = tuple(mapping)
+    if stats is not None:
+        stats.update(diff_seconds=after_diff-start, summary_seconds=perf_counter()-after_diff,
+                     diff_input_bytes=len(old_blob)+len(new_blob), patch_bytes=len(patch))
+    return result

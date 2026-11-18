@@ -40,8 +40,11 @@ standard techniques; associativity alone is not a sufficient research novelty.
    prior art for decomposing matching into line correspondence. The moving
    `latest` URL does not establish an implementation date or parallel scan.
 7. [Git's 2014 blame performance rewrite](https://github.com/git/git/commit/7e6ac6e4391caa0fc379cb699013d503380e4214)
-   is an additional implementation-history lead. The web view did not expose
-   enough patch detail to evaluate its algorithm in this review.
+   ([raw patch](https://github.com/git/git/commit/7e6ac6e4391caa0fc379cb699013d503380e4214.patch))
+   replaces a repeatedly scanned global entry list with per-origin work lists
+   and a commit priority queue. It is prior work on reducing attribution
+   bookkeeping costs, not evidence of a parallel prefix implementation. The
+   HTML view was incomplete; the raw patch supplied the implementation detail.
 
 ## Search coverage and limits
 
@@ -68,3 +71,11 @@ algorithm claim requires a compact representation or scheduling result that
 materially differs from this prior art, plus a wider literature review. The
 current implementation should be presented as an experiment, not a first-ever
 parallel blame algorithm.
+
+A foundational algorithm reference is Guy E. Blelloch,
+[Prefix Sums and Their Applications, CMU-CS-90-190, November 1990](https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/CMU-CS-90-190.html).
+It establishes general parallel scan as an existing primitive. Applying an
+associative operator to that primitive is not by itself a new scan algorithm.
+Additional exact-phrase searches for `"git blame" "parallel" "prefix scan"` and
+`"git blame" "parallel" "speculative" algorithm` did not identify a direct match
+in the inspected results; noisy Git-hosting UI matches dominate some searches.

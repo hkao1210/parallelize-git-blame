@@ -1,0 +1,38 @@
+         316756 function calls (316753 primitive calls) in 1.540 seconds
+
+   Ordered by: cumulative time
+   List reduced from 175 to 30 due to restriction <30>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.001    0.001    1.540    1.540 schedulers.py:12(run)
+      108    0.002    0.000    1.515    0.014 history.py:17(git)
+      108    0.001    0.000    1.501    0.014 subprocess.py:373(check_output)
+      108    0.001    0.000    1.500    0.014 subprocess.py:461(run)
+        1    0.002    0.002    1.454    1.454 history.py:25(discover)
+      108    0.002    0.000    1.286    0.012 subprocess.py:1110(communicate)
+      108    0.005    0.000    1.283    0.012 subprocess.py:1968(_communicate)
+      599    0.002    0.000    1.260    0.002 selectors.py:403(select)
+      599    1.257    0.002    1.257    0.002 {method 'poll' of 'select.poll' objects}
+      108    0.010    0.000    0.212    0.002 subprocess.py:758(__init__)
+      108    0.014    0.000    0.198    0.002 subprocess.py:1703(_execute_child)
+      108    0.104    0.001    0.104    0.001 {built-in method _posixsubprocess.fork_exec}
+        4    0.000    0.000    0.074    0.018 schedulers.py:51(<listcomp>)
+        4    0.000    0.000    0.074    0.018 schedulers.py:29(compute)
+        4    0.003    0.001    0.074    0.018 diff_map.py:9(edge)
+      815    0.057    0.000    0.057    0.000 {built-in method posix.read}
+      108    0.005    0.000    0.014    0.000 subprocess.py:1227(_close_pipe_fds)
+      108    0.001    0.000    0.012    0.000 history.py:10(git_environment)
+      108    0.002    0.000    0.010    0.000 history.py:11(<dictcomp>)
+     4968    0.002    0.000    0.008    0.000 _collections_abc.py:909(__iter__)
+      216    0.005    0.000    0.007    0.000 contextlib.py:496(callback)
+        4    0.002    0.000    0.005    0.001 provenance.py:15(compose)
+       16    0.001    0.000    0.005    0.000 {method 'extend' of 'list' objects}
+      216    0.000    0.000    0.004    0.000 selectors.py:352(register)
+    12196    0.002    0.000    0.004    0.000 diff_map.py:23(<genexpr>)
+     4860    0.002    0.000    0.004    0.000 os.py:675(__getitem__)
+    12420    0.002    0.000    0.004    0.000 os.py:805(fsencode)
+      216    0.003    0.000    0.004    0.000 selectors.py:235(register)
+    48004    0.003    0.000    0.004    0.000 provenance.py:17(<genexpr>)
+     2268    0.001    0.000    0.003    0.000 subprocess.py:1791(<genexpr>)
+
+

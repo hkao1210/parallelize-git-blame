@@ -44,3 +44,28 @@ GO/PIVOT decision requires the still-unperformed scaling and realistic workload
 experiments; no premature decision report is issued.
 
 Raw-data run completed successfully: 111 histories, 731 revision comparisons, zero mismatches. CLI delete/reintroduce attributed the reinserted line to commit `48ab7a181c2e5857a5e093fa11f6225fe5e470af`, original/final line 2; unsupported config exited 2.
+
+## Performance and prior-art verification — 2026-11-18
+
+Re-ran the original suite: 5 methods passed in 175.153 s. Committed a checkpoint
+at `eb8ff39` before changing discovery and scheduling. Expanded scope to allow
+other files while requiring target presence in every nonempty tree; added
+rename-source rejection and historical-attribute rejection. Added per-invocation
+blob caching, identity-edge skipping, backward sequential resolution, bounded
+parallel diff workers, disjoint geometric windows, work counters and stage timers.
+
+The expanded regression suite passed all 8 methods in 276.654 s, including the
+original 100 randomized histories and new full/windowed checks on 111 histories.
+The benchmark then ran alone: 4 workloads × 10 configurations × 10 repetitions
+= 400 exact oracle matches. No failed runs or slow configurations were discarded.
+Results are warmed-cache measurements, not controlled cold-cache measurements.
+
+The experiment failed the end-to-end speedup hypothesis on every selected case,
+despite reproducible edge-stage scaling. Profiling was run after measurements,
+not alongside them. See `docs/day3_decision.md` and `docs/profiling-observations.md`.
+The broad parallel-blame idea has explicit 2019 prior art; novelty of a narrow
+summary/window contribution remains unestablished. See `docs/novelty-review.md`.
+
+Commands: `.venv/bin/python -m bench.run --repeats 10`, `-m bench.analyze`,
+`-m bench.profile`, `-m bench.plot`, and `-m bench.presentation`.
+No compiled extension, merge support, or unmeasured performance claim was added.
