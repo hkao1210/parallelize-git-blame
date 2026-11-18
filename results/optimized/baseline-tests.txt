@@ -1,0 +1,13 @@
+test_algebra (tests.test_correctness.Correctness) ... ok
+test_deterministic (tests.test_correctness.Correctness) ... ok
+test_early_stop_and_full_work (tests.test_correctness.Correctness) ... ok
+test_parallel_and_windows (tests.test_correctness.Correctness) ... ok
+test_randomized (tests.test_correctness.Correctness) ... ok
+test_reject_merge_binary_deletion_attributes (tests.test_correctness.Correctness) ... ok
+test_reject_rename_source (tests.test_correctness.Correctness) ... ok
+test_scope_rejections (tests.test_correctness.Correctness) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 329.979s
+
+OK

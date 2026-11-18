@@ -1,0 +1,77 @@
+[
+  {
+    "file": "xdiff.h",
+    "url": "https://raw.githubusercontent.com/git/git/v2.54.0/xdiff/xdiff.h",
+    "sha256": "906854ed0e616f1c25dc294dbd894bbac80b15d539594de09e4f30e56bb90d92"
+  },
+  {
+    "file": "xdiffi.c",
+    "url": "https://raw.githubusercontent.com/git/git/v2.54.0/xdiff/xdiffi.c",
+    "sha256": "da99b3627a95d1bad456ca1108277058f4c5012fe5acc752f1472f3f58119a2a"
+  },
+  {
+    "file": "xdiffi.h",
+    "url": "https://raw.githubusercontent.com/git/git/v2.54.0/xdiff/xdiffi.h",
+    "sha256": "645b212ec6d32b3f6ac1e6cae56a5d802dea3176274104d2fbf4dc20b16ccfa3"
+  },
+  {
+    "file": "xemit.c",
+    "url": "https://raw.githubusercontent.com/git/git/v2.54.0/xdiff/xemit.c",
+    "sha256": "6d520823312ab4a405e9fbc303dfb325792747681c508bc3d765a6e157414241"
+  },
+  {
+    "file": "xemit.h",
+    "url": "https://raw.githubusercontent.com/git/git/v2.54.0/xdiff/xemit.h",
+    "sha256": "0a8c569eec74bb4d6e8b7b9a50b457532550800e0566cbba6d185974613a2e6c"
+  },
+  {
+    "file": "xhistogram.c",
+    "url": "https://raw.githubusercontent.com/git/git/v2.54.0/xdiff/xhistogram.c",
+    "sha256": "2558f24a310bb1d77cd61f79aef84035831860070b14656616843be99ae178cd"
+  },
+  {
+    "file": "xinclude.h",
+    "url": "https://raw.githubusercontent.com/git/git/v2.54.0/xdiff/xinclude.h",
+    "sha256": "793b1d39b2380ff6d6cee28a3539b0e716d6a20a066f1ac6559f0a3bbf641d16"
+  },
+  {
+    "file": "xmacros.h",
+    "url": "https://raw.githubusercontent.com/git/git/v2.54.0/xdiff/xmacros.h",
+    "sha256": "f6db27fb8b3c39fbfa1b06bf7a1af45bec4b125614147353fc98798aa89c0bf2"
+  },
+  {
+    "file": "xmerge.c",
+    "url": "https://raw.githubusercontent.com/git/git/v2.54.0/xdiff/xmerge.c",
+    "sha256": "c1b3ddf8f5c962caa3f308a655bd4a915337704a8f7a6f9bc1f2099fb7e89405"
+  },
+  {
+    "file": "xpatience.c",
+    "url": "https://raw.githubusercontent.com/git/git/v2.54.0/xdiff/xpatience.c",
+    "sha256": "5cef36a09f9b140da2f5c1b131f6e96c1a2f3a382ccc670addf57ca4e0622d40"
+  },
+  {
+    "file": "xprepare.c",
+    "url": "https://raw.githubusercontent.com/git/git/v2.54.0/xdiff/xprepare.c",
+    "sha256": "5cc112b9c42f8822fa5eb4af5b54d773db0019a7d6898e2d10bf7457fd97c8b9"
+  },
+  {
+    "file": "xprepare.h",
+    "url": "https://raw.githubusercontent.com/git/git/v2.54.0/xdiff/xprepare.h",
+    "sha256": "4945e8fffe620cd4d687c12618d1a4b2aa95a7a8097abf3e5e341abf96c76e1b"
+  },
+  {
+    "file": "xtypes.h",
+    "url": "https://raw.githubusercontent.com/git/git/v2.54.0/xdiff/xtypes.h",
+    "sha256": "7004fefe30f7b744ee2f9f3a21bb280b9fd2ef937fe679aec399a2cc006f5be4"
+  },
+  {
+    "file": "xutils.c",
+    "url": "https://raw.githubusercontent.com/git/git/v2.54.0/xdiff/xutils.c",
+    "sha256": "b2250608a7163dc596df42b04fc33cc3cd45b660fd89a3f4b30271ef5ea9db5c"
+  },
+  {
+    "file": "xutils.h",
+    "url": "https://raw.githubusercontent.com/git/git/v2.54.0/xdiff/xutils.h",
+    "sha256": "49b8cf59f7c714b4bbc6bfe1b701ddcdfe9dff70b1407a38f59d27e4fa408b42"
+  }
+]
